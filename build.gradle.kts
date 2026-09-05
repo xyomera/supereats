@@ -1,6 +1,9 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
 	id("net.fabricmc.fabric-loom")
 	`maven-publish`
+	id("org.jetbrains.kotlin.jvm") version "2.4.10"
 }
 
 repositories {
@@ -35,6 +38,7 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	implementation("net.fabricmc.fabric-api:fabric-api:${providers.gradleProperty("fabric_api_version").get()}")
+    implementation("net.fabricmc:fabric-language-kotlin:${providers.gradleProperty("fabric_kotlin_version").get()}")
 }
 
 tasks.processResources {
@@ -48,6 +52,12 @@ tasks.processResources {
 
 tasks.withType<JavaCompile>().configureEach {
 	options.release = 25
+}
+
+kotlin {
+	compilerOptions {
+		jvmTarget = JvmTarget.JVM_25
+	}
 }
 
 java {
