@@ -1,3 +1,9 @@
+/*
+	Copyright (C) 2026 xyomera,
+	All rights reserved.
+	but based on the Apache 2.0 license.
+ */
+
 package com.xyomera.mixin;
 
 import net.minecraft.server.MinecraftServer;
